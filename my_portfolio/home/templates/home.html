@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        img {
+            display: block; /* Ensures the image is treated as a block element */
+            margin: 0 auto; /* Centers the image horizontally */
+            height: 200px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            overflow-y: auto; /* Add vertical scrollbar */
+            max-height: 400px; /* Set maximum height for scrollbar */
+        }
+        br {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        {% load static %}
+        {% for i in aboutme %}
+        <h1>Hello, my name is {{ i.firstname }} {{i.lastname}} </h1>
+        <br>
+        <img src="{% static 'me.jpg' %}" alt="Profile Image">
+        <br>
+        <h1> {{i.about}} </h1>
+        <h1>Came to this earth on : {{i.dob_me}}</h1>
+        {% endfor %}
+    </div>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>
